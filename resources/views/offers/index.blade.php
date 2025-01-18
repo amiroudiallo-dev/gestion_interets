@@ -15,14 +15,14 @@
 
             <!-- Table des offres -->
             <div class="overflow-x-auto bg-white shadow-md rounded-lg">
-                <table class="table-auto w-full text-left border-collapse">
+                <table class="table-auto w-full text-left divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
                             <th class="px-4 py-2 border">ID</th>
                             <th class="px-4 py-2 border">Dénomination</th>
-                            <th class="px-4 py-2 border">Numéro IFU</th>
-                            <th class="px-4 py-2 border">Numéro RCCM</th>
-                            <th class="px-4 py-2 border">Nature de l'activité</th>
+                            <th class="px-4 py-2 border">IFU</th>
+                            <th class="px-4 py-2 border">RCCM</th>
+                            <th class="px-4 py-2 border">Domaine</th>
                             <th class="px-4 py-2 border">Contact</th>
                             <th class="px-4 py-2 border">Date de dépôt</th>
                             <th class="px-4 py-2 border">Numéro enveloppe</th>
@@ -38,22 +38,23 @@
                                 <td class="px-4 py-2 border">{{ $offer->rccm_number }}</td>
                                 <td class="px-4 py-2 border">{{ $offer->nature_of_activity }}</td>
                                 <td class="px-4 py-2 border">{{ $offer->contact_info }}</td>
-                                <td class="px-4 py-2 border">{{ $offer->deposit_date }}</td>
+                                <td class="px-4 py-2 border">{{ $offer->deposit_date->format('d-m-Y') }}</td>
                                 <td class="px-4 py-2 border">{{ $offer->envelope_number }}</td>
                                 <td class="px-4 py-2 border">
-                                    <div class="flex items-center">
-                                        <!-- Bouton Modifier -->
-                                        <a href="{{ route('offers.edit', $offer->id) }}" class="mr-4">
+                                    <div class="flex ...">
+                                        <!-- Edit Icon -->
+                                        <a href="{{ route('offers.edit', $offer->id) }}" class="flex-1">
                                             <i class="fas fa-edit"></i>
                                         </a>
-
-                                        <!-- Bouton Supprimer -->
-                                        <form action="{{ route('offers.destroy', $offer->id) }}" method="POST" class="inline-block">
+                                        <!-- Delete Form -->
+                                        <form action="{{ route('offers.destroy', $offer->id) }}" method="POST" class="inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette offre ?')" class="ml-6">
+                                            <button @click="open = true">
                                                 <i class="fas fa-trash"></i>
                                             </button>
+
+                                            <!-- Modal -->
                                         </form>
                                     </div>
                                 </td>
