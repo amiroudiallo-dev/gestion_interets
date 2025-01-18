@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Observation;
+
 class ObservationsController extends Controller
 {
     /**
@@ -12,7 +14,8 @@ class ObservationsController extends Controller
     public function index()
     {
         //
-        return view('observations.index');
+        $observations = Observation::paginate(10);
+        return view('observations.index', compact('observations'));
     }
 
     /**
@@ -21,6 +24,7 @@ class ObservationsController extends Controller
     public function create()
     {
         //
+        return view('observations.create');
     }
 
     /**
@@ -29,6 +33,13 @@ class ObservationsController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        Observation::create($request->all());
+
+        return redirect()->route('observations.index')->with('success', 'Observation ajoutée avec succès.');
     }
 
     /**
@@ -42,24 +53,35 @@ class ObservationsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Observation $observation)
     {
         //
+        return view('observations.edit', compact('observation'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Observation $observation)
     {
         //
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $observation->update($request->all());
+
+        return redirect()->route('observations.index')->with('success', 'Observation mise à jour avec succès.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Observation $observation)
     {
         //
+        $observation->delete();
+
+        return redirect()->route('observations.index')->with('success', 'Observation supprimée avec succès.');
     }
 }
