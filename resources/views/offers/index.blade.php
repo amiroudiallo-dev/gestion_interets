@@ -38,7 +38,7 @@
                                 <td class="px-4 py-2 border">{{ $offer->rccm_number }}</td>
                                 <td class="px-4 py-2 border">{{ $offer->nature_of_activity }}</td>
                                 <td class="px-4 py-2 border">{{ $offer->contact_info }}</td>
-                                <td class="px-4 py-2 border">{{ $offer->deposit_date }}</td>
+                                <td class="px-4 py-2 border">{{ $offer->deposit_date->format('d-m-Y') }}</td>
                                 <td class="px-4 py-2 border">{{ $offer->envelope_number }}</td>
                                 <td class="px-4 py-2 border">
                                     <div class="flex ...">
@@ -50,9 +50,11 @@
                                         <form action="{{ route('offers.destroy', $offer->id) }}" method="POST" class="inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" onclick="return confirm('Are you sure?')">
+                                            <button @click="open = true">
                                                 <i class="fas fa-trash"></i>
                                             </button>
+
+                                            <!-- Modal -->
                                         </form>
                                     </div>
                                 </td>
