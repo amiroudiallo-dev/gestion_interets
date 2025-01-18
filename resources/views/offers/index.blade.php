@@ -20,9 +20,9 @@
                         <tr>
                             <th class="px-4 py-2 border">ID</th>
                             <th class="px-4 py-2 border">Dénomination</th>
-                            <th class="px-4 py-2 border">Numéro IFU</th>
-                            <th class="px-4 py-2 border">Numéro RCCM</th>
-                            <th class="px-4 py-2 border">Nature de l'activité</th>
+                            <th class="px-4 py-2 border">IFU</th>
+                            <th class="px-4 py-2 border">RCCM</th>
+                            <th class="px-4 py-2 border">Domaine</th>
                             <th class="px-4 py-2 border">Contact</th>
                             <th class="px-4 py-2 border">Date de dépôt</th>
                             <th class="px-4 py-2 border">Numéro enveloppe</th>

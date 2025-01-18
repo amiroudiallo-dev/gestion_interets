@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OffreController;
+use App\Http\Controllers\DomainsController;
+use App\Http\Controllers\RolesController;
+use App\Http\Controllers\ObservationsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,8 +23,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/statistics', 'statistics')->name('statistics');
     Route::view('/rapport', 'rapport')->name('rapport');
 
-    // Routes CRUD pour les offres
+    // CRUD for offers
     Route::resource('offers', OffreController::class);
+    // CRUS for roles
+    Route::resource('roles', RolesController::class);
+    //CRUD for domains
+    Route::resource('domains', DomainsController::class);
+    // CRUD for observations
+    Route::resource('observations', ObservationsController::class);
+
 });
 
 require __DIR__.'/auth.php';

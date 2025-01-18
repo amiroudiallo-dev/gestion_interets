@@ -49,7 +49,7 @@
                     </div>
 
                     <div>
-                        <x-input-label for="nature_of_activity" :value="__('Nature activité')" />
+                        <x-input-label for="nature_of_activity" :value="__('Domaine')" />
                         <x-text-input class="mt-1"
                             id="nature_of_activity"
                             name="nature_of_activity"
@@ -61,7 +61,7 @@
                     </div>
 
                     <div>
-                        <x-input-label for="contact_info" :value="__('Informations de contact')" />
+                        <x-input-label for="contact_info" :value="__('Nº Tel')" />
                         <x-text-input class="mt-1"
                             id="contact_info"
                             name="contact_info"
