@@ -23,6 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id',
     ];
 
     /**
@@ -51,5 +52,22 @@ class User extends Authenticatable
     public function offers()
     {
         return $this->hasMany(Offre::class);
+    }
+
+    /**
+     * Get the role associate with the user.
+     */
+    public function role() {
+        return $this->belongsToMany(Role::class, 'role_user');
+    }
+
+    /**
+     * Check if user as a specific role.
+     *
+     * @param string $roleName
+     * @return bool
+     */
+    public function hasRole(string $roleName): bool {
+        return $this->role && $this->role->name === $roleName;
     }
 }

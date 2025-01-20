@@ -54,6 +54,9 @@
                             <x-dropdown-link :href="route('roles.index')">
                                 {{ __('Rôles') }}
                             </x-dropdown-link>
+                            <x-dropdown-link :href="route('users.index')">
+                                {{ __('Utilisateurs') }}
+                            </x-dropdown-link>
                             <x-dropdown-link :href="route('domains.index')">
                                 {{ __('Domaines') }}
                             </x-dropdown-link>
