@@ -14,12 +14,12 @@
                     <!-- Dénomination -->
                     <div>
                         <x-input-label for="name" :value="__('Libellé')" />
-                        <x-text-input id="name" name="name" type="text" class="mt-1" required />
+                        <x-text-input id="name" name="name" type="text" class="mt-1 py-4" required />
                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
                     </div>
                     <div>
                         <x-input-label for="desc" :value="__('Description')" />
-                        <x-textarea-input id="desc" name="desc" type="text" class="mt-1" required />
+                        <x-textarea-input id="desc" name="desc" type="text" class="mt-1 w-full" required />
                         <x-input-error :messages="$errors->get('desc')" class="mt-2" />
                     </div>
                 </div>

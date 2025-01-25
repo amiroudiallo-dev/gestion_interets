@@ -5,6 +5,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\OffreController;
 use App\Http\Controllers\DomainsController;
 use App\Http\Controllers\RolesController;
+use App\Http\Controllers\FirstRegisterController;
+use App\Http\Controllers\SecondRegisterController;
 use App\Http\Controllers\ObservationsController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,22 +22,24 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Gestion des utilisateurs
-    Route::get('/users', [UserController::class, 'index'])->name('users.index');
-    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-    Route::patch('/users/{user}', [UserController::class, 'update'])->name('users.update');
-    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::resource('users', UserController::class);
     Route::post('/users', [UserController::class, 'store'])->name('users.store');
 });
 
 // Routes nécessitant une authentification et vérification par email
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
+    Route::view('/analyse', 'analyse')->name('analyse');
+    Route::view('/deliberate', 'delibarate')->name('deliberation');
     Route::view('/interets', 'interets')->name('interets');
     Route::view('/statistics', 'statistics')->name('statistics');
     Route::view('/rapport', 'rapport')->name('rapport');
 
+    Route::resource('first_registers', FirstRegisterController::class);
+
+    Route::resource('second_registers', SecondRegisterController::class);
     // Gestion des offres
-    Route::resource('offers', OffreController::class);
+    // Route::resource('offers', OffreController::class);
 
     // Gestion des rôles
     Route::resource('roles', RolesController::class);
