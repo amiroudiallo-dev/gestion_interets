@@ -14,15 +14,9 @@ class CreateOffresTable extends Migration
     public function up()
     {
         Schema::create('offres', function (Blueprint $table) {
-            $table->id(); // Identifiant unique
-            $table->string('denomination'); // Dénomination
-            $table->string('ifu_number'); // Numéro IFU
-            $table->string('rccm_number'); // Numéro RCCM
-            $table->string('nature_of_activity'); // Nature de l'activité
-            $table->string('contact_info'); // Informations de contact
-            $table->date('deposit_date'); // Date de dépôt
-            $table->integer('envelope_number'); // Numéro d'enveloppe
-            $table->timestamps(); // Colonnes created_at et updated_at
+            $table->id();
+            $table->timestamps();
+
         });
     }
 

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Domain;
+use App\Models\Observation;
 
 class Offre extends Model
 {
@@ -18,13 +20,18 @@ class Offre extends Model
      * @var array
      */
     protected $fillable = [
-        'denomination',
+        'deposit_date',
+        'soumissionnaire',
+        'object',
+        'envelope_number',
+        'observation_id',
+        'contact_info',
         'ifu_number',
         'rccm_number',
-        'nature_of_activity',
-        'contact_info',
-        'deposit_date',
-        'envelope_number',
+        'domaine_id',
+        'first_register',
+        'second_register',
+
     ];
 
     /**
@@ -35,6 +42,10 @@ class Offre extends Model
     protected $casts = [
         'deposit_date' => 'date',
         'envelope_number' => 'integer',
+        'observation_id' => 'integer',
+        'domaine_id' => 'integer',
+        'first_register' => 'boolean',
+        'second_register' => 'boolean',
     ];
 
     /**
@@ -45,5 +56,25 @@ class Offre extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the domains that owns the Offre
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function domains(): BelongsTo
+    {
+        return $this->belongsTo(Domain::class, 'domain_id');
+    }
+
+    /**
+     * Get the observation that owns the Offre
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function observation(): BelongsTo
+    {
+        return $this->belongsTo(Observation::class, 'observation_id');
     }
 }

@@ -2,6 +2,11 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
+        <div class="mt-4">
+            <x-input-label for="name" :value="__('Nom')" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autocomplete="username" />
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        </div>
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />

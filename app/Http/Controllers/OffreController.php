@@ -17,6 +17,15 @@ class OffreController extends Controller
     {
         return view('offers.create');
     }
+    // this function analyse if an offer is conforme or not.
+    public function analyse() {
+
+    }
+
+    // this function deliiberate all the offer which are conforme.
+    public function deliberate() {
+
+    }
 
     public function store(Request $request)
     {
