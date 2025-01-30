@@ -16,6 +16,7 @@ class FirstRegister extends Model
         'soumissionnaire',
         'numero_envelop',
         'tel',
+        'objet',
         'observation_id',
         'domain_id',
     ];

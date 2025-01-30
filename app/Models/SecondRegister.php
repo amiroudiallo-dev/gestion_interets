@@ -8,12 +8,19 @@ use App\Models\Analysis;
 class SecondRegister extends Model
 {
     //
+    protected $table = 'second_registers';
+
+    public $incrementing = false;
+
     protected $fillable = [
+        'id',
         'numero_ordre',
         'date_heure',
         'objet',
-        'observation',
+        'observation_id',
     ];
+
+    protected $primaryKey = 'id';
 
 
     /**
@@ -23,4 +30,9 @@ class SecondRegister extends Model
     {
         return $this->hasOne(Analysis::class, 'numero_ordre', 'numero_ordre');
     }
+    public function observation()
+    {
+        return $this->belongsTo(Observation::class);
+    }
+
 }

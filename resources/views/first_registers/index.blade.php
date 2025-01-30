@@ -50,8 +50,6 @@
                                             <button @click="open = true">
                                                 <i class="fas fa-trash"></i>
                                             </button>
-
-                                            <!-- Modal -->
                                         </form>
                                     </div>
                                 </td>

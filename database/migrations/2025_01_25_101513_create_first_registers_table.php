@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('soumissionnaire');
             $table->string('numero_envelop');
             $table->string('tel');
+            $table->string('objet');
             $table->foreignId('observation_id')->nullable()->constrained('observations')->nullOnDelete();
             $table->foreignId('domain_id')->nullable()->constrained('domains')->nullOnDelete();
             $table->timestamps();
